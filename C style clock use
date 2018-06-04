@@ -1,0 +1,15 @@
+// Program to find time in older versions of c++
+#include<iostream>
+#include<ctime>
+using namespace std;
+
+int main()
+{
+	clock_t start=clock();
+	int i=10;
+	while(i<454545)
+	++i;
+	clock_t stop=clock();
+	
+	cout<<"\nThe time lapsed is : "<<((float)(stop-start)/CLOCKS_PER_SEC);
+}
