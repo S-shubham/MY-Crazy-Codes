@@ -1,0 +1,16 @@
+#include<iostream>
+#include<chrono>
+using namespace std::chrono;
+using namespace std;
+int main()
+{
+	auto start=high_resolution_clock::now();
+	// code to be executed
+	int i=0;
+	while(i<45454545)
+	++i;
+	auto stop=high_resolution_clock::now();
+	
+	auto duration=duration_cast<microseconds>(stop-start);
+	cout<<"\nTime lapse is : "<<duration.count();
+}
