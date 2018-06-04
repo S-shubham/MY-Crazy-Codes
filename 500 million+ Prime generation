@@ -1,0 +1,33 @@
+// this is crazzzzy!!!!!!!!!
+// finding all the prime numbers smaller than INT_MAX
+#include<iostream>
+#include<cmath>
+#include<climits>
+#include<fstream>
+using namespace std;
+
+bool isprime(int n)
+{
+	int limit=sqrt(n);
+	if(n%2==0)
+	return 0;
+	for(int i=3;i<=limit;i=i+2)
+	{
+		if(!(n%i))
+		return 0;
+	}
+	return 1;
+}
+
+int main()
+{
+	ofstream fout;
+	fout.open("prime_list.txt");
+	for(int i=3;i<INT_MAX;i=i+2)
+	{
+		if(isprime(i))
+		fout<<i<<" ";
+	}
+	cout<<"\njob done ";
+	fout.close();
+}
