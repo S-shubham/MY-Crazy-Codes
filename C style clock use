@@ -4,7 +4,7 @@
 using namespace std;
  
 int main()
-{
+{  
 	clock_t start=clock();
 	int i=10;
 	while(i<454545)
