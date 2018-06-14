@@ -2,7 +2,7 @@
 #include<chrono>  
 using namespace std::chrono;  
 using namespace std;  
-int main() 
+int main()  
 {
 	auto start=high_resolution_clock::now();
 	// code to be executed
