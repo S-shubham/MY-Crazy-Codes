@@ -1,0 +1,17 @@
+// I was coding for an online platform and my program was supposed to take input from the platform
+// the input was in lines and after the end of each line there was a new line statement
+// so to test how it woudl behave if I ignore this note and simply go ahead and take input in traditional way
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	string first,second;
+	cin>>first;
+	cin>>second;
+	cout<<"\n Frist string is : "<<first;
+	cout<<"\nSecond stirng is : "<<second;
+	// newline is working fine bcoz as soon as cin encounters newline it move on to take new input
+}
