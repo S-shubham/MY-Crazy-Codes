@@ -3,7 +3,7 @@
 #include<ctime>    
 using namespace std;
    
-int main()
+int main()  
 {    
 	clock_t start=clock();
 	int i=10;
