@@ -35,3 +35,46 @@ int main()
 	for(int i=start;i<=end;i++)
 	cout<<arr[i]<<" ";
 }
+
+
+//////////////time complexity : O(nm) where 0<m<n
+
+
+A better approach with O(n) time is using STL set
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int arr[]={2,4,1,1,6,8,3,6,4,7,15,3};
+	
+	int start=0,end=0,max=1,last=0;
+	set<int> s;
+	s.insert(arr[0]);
+	
+	for(int i=1;i<12;i++)
+	{
+		if(s.find(arr[i])==s.end())
+		s.insert(arr[i]);
+		else
+		{
+			if(max<i-last)
+			{
+				start=last;
+				end=i-1;
+				max=i-last;
+			}
+			last=i;
+			s.clear();
+		}
+	}
+	if(max<(12-last))
+	{
+		start=last;
+		end=11;
+	}
+	cout<<"\nThe subarray is : ";
+	for(int i=start;i<=end;i++)
+	cout<<arr[i]<<" ";
+}
