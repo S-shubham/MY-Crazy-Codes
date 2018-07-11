@@ -1,0 +1,43 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+int main() {
+   int a,b;
+    cin>>a>>b;
+    int price[a];
+    for(int i=0;i<a;i++)
+        cin>>price[i];
+    int charged;
+    cin>>charged;
+    
+    price[b]=0;
+    int sum=0;
+    for(int i=0;i<a;i++)
+        sum+=price[i];
+    if(sum/2==charged)
+        cout<<"Bon Appetit";
+    else
+        cout<<(charged-sum/2);
+    return 0;
+}
