@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the solve function below.
+string solve(int year) {
+    int t=year;
+        string temp="";
+    while(t>0)
+    {
+        int l=t%10;
+        temp=temp+char(l+48);
+        t=t/10;
+    }
+    
+        char h=temp[0];
+        temp[0]=temp[3];
+        temp[3]=h;
+        h=temp[1];
+        temp[1]=temp[2];
+        temp[2]=h;
+    
+if(year<1918)
+{
+    if(year%4==0)
+        return "12.09."+temp;
+    else
+        return "13.09."+temp;
+}
+if(year==1918)
+    return "26.09.1918";
+    else
+    {
+        if(year%400==0 || (year%4==0 && year%100!=0))
+{
+    return ("12.09."+temp);
+}
+    else
+        return ("13.09."+temp);
+    }
+        
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int year;
+    cin >> year;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    string result = solve(year);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
