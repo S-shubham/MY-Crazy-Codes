@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++)
+	cin>>arr[i];
+	int first,last,flag=0;
+	
+	for(int i=0;i<n;i++)
+	{
+		if(i==0)
+		{
+			if(arr[0]>arr[1])
+			{
+				first=0;
+				flag=1;
+			}
+			continue;
+		}
+		if(i==n-1)
+		{
+			if(arr[n-2]>arr[n-1])
+			{
+				first=n-2;
+				last=n-1;
+				break;
+			}
+		}
+		if(arr[i]>arr[i-1] && arr[i]<arr[i+1])
+		continue;
+		else
+		{
+			if(!flag)
+			{
+				first=i;
+				flag=1;
+			}
+			else
+			{
+				last=i;
+				break;
+			}
+		}
+	}
+	
+	int temp=arr[first];
+	arr[first]=arr[last];
+	arr[last]=temp;
+	
+	for(int i=0;i<n;i++)
+	cout<<arr[i]<<" ";
+}
