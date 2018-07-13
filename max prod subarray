@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int arr[]={1, -2, -3, 0, 7, -8, -2};
+	int maxp=arr[0];
+	int pd=arr[0];
+	
+	for(int i=1;i<7;i++)
+	{
+		if(arr[i]!=0)
+		{
+			pd=pd*arr[i];
+			if(pd>maxp)
+			maxp=pd;
+		}
+		else
+		pd=1;
+	}
+	cout<<maxp;
+}
