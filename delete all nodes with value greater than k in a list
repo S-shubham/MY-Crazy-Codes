@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+struct node{
+	int data;
+	node* next;
+};
+
+void push(node** head,int data)
+{
+	node* temp=new node();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(*head==NULL)
+	{
+		*head=temp;
+		return;
+	}
+	temp->next=*head;
+	*head=temp;
+}
+
+void del(node**head,int k)
+{
+	if(*head==NULL)
+	return;
+	
+	node* trav=*head;
+	while(trav->next)
+	{
+		if(trav->next->data > k)
+		{
+			trav->next=trav->next->next;
+			continue;
+		}
+		else
+		trav=trav->next;
+	}
+	
+	if((*head)->data > k)
+	*head=(*head)->next;
+}
+
+void print(node* head)
+{
+	while(head)
+	{
+		cout<<head->data<<" ";
+		head=head->next;
+	}
+}
+int main()
+{
+	node*head=NULL;
+	push(&head,3);
+	push(&head,4);
+	push(&head,5);
+	push(&head,16);
+	push(&head,8);
+	push(&head,24);
+	push(&head,55);
+	cout<<"\nBefre";
+	print(head);
+	del(&head,10);
+	cout<<"\nAfter";
+	print(head);
+	
+}
