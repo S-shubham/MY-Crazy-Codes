@@ -3,7 +3,7 @@
 #include<iostream>
 #include<cmath>
 #include<climits>   
-#include<fstream>
+#include<fstream> 
 using namespace std;
     
 bool isprime(int n)
