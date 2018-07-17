@@ -2,7 +2,7 @@
 // finding all the prime numbers smaller than INT_MAX
 #include<iostream>
 #include<cmath>
-#include<climits>
+#include<climits>   
 #include<fstream>
 using namespace std;
   
