@@ -1,0 +1,55 @@
+maximize the profit by buying and selling the stock in a given time period
+// you can only buy and sell once 
+
+#include<iostream>
+using namespace std;
+
+//this is a O(n^2) solution with constant space
+int first(int arr[],int n)
+{
+	int max=0;
+	for(int i=0;i<n-1;i++)
+	{
+		int thismax=0;
+		for(int j=i+1;j<n;j++)
+		{
+			if(thismax<arr[j]-arr[i])
+			thismax=arr[j]-arr[i];
+		}
+		if(max<thismax)
+		max=thismax;
+	}
+	return max;
+}
+
+// this is a O(n) solution with O(n) space 
+int second(int price[],int n)
+{
+	int arr[n];
+	arr[n-1]=price[n-1];
+	for(int j=n-2;j>=0;j--)
+	{
+		if(price[j]>arr[j+1])
+		arr[j]=price[j];
+		else
+		arr[j]=arr[j+1];
+	}
+	int max=0;
+	for(int i=0;i<n;i++)
+	{
+		if(max<arr[i]-price[i])
+		max=arr[i]-price[i];
+	}
+	return max;
+}
+
+
+int main()
+{
+	int n=7;
+	int price[n]={100, 180, 260, 310, 40, 535, 695};
+	
+	cout<<"\n max profit is: "<<first(price,n);
+	
+	cout<<"\n max profit is: "<<second(price,n);
+}
