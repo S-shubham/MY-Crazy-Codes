@@ -1,0 +1,29 @@
+// This is a naive approach
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n=5;
+	int arr[n]={5,4,8,2,6};
+	
+	int count[n];
+	for(int i=0;i<n;i++)  // O(n^2)
+	{
+		count[i]=0;
+		for(int j=0;j<n;j++)
+		{
+			if(arr[j]<arr[i])
+			++count[i];
+		}
+	}
+	int temparr[n];
+	for(int i=0;i<n;i++)  // O(n)
+	temparr[count[i]]=arr[i];
+	
+	for(int i=0;i<n;i++)   // O(n)
+	cout<<temparr[i]<<" ";
+	
+	// this is extremely awful as it takes O(n^2 + 2n) time and O(2n) space
+}
