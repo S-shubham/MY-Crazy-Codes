@@ -1,0 +1,42 @@
+problem : WAP to perform left rotation of string by k position.
+
+Constraint : 
+
+length(string) <= INT_MAX
+k <= INT_MAX
+
+............................................................
+Time Comp. = O(n)
+space Comp. = O(n)
+...............................................
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string rotate(string str,int k)
+{
+	// Assuming string is of length >=1 
+	
+	// find the length of the string
+	int len=str.length();
+	
+	// fold k to be in a range <= len of string
+	k=k%len;
+	
+	// if len==1 or len==k then string will be same
+	if(len==1 || k==len)
+	return str;
+	
+	// else return this string
+	return (str.substr(k,len-k)+ str.substr(0,k));
+}
+
+int main()
+{
+	// program to rotate a given string by k places
+	string str;
+	int k;
+	cin>>str>>k;
+	cout<<str<<" after rotating by "<<k<<" places : "<<rotate(str,k);
+	
+}
