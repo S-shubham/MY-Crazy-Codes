@@ -1,0 +1,31 @@
+Problem: Given a string, remove the punctuation from the string if the given character is a punctuation character as classified by the
+         current C locale.
+
+.......................................................................
+The below approach uses extra space and calls library function ispunct()
+...................................................................
+
+// check if the given string is a panagram or not
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string removePunct(string str)
+{
+	string s="";
+	int i=0;
+	while(str[i]!='\0')
+	{
+		if(!ispunct(str[i]))	
+		s=s+str[i];
+		++i;
+	}
+	return s;
+}
+
+int main()
+{
+	string str="%welcome' to @geeksforgeek<s";
+	
+	cout<<"\n without punct is: "<<removePunct(str);
+}
