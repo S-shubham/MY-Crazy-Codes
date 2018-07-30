@@ -1,0 +1,48 @@
+Problem: Given a string find the longest consecutive character set and print it
+
+............................
+This is a linear approach with O(1) space
+.............................
+.......................................
+.....................................................
+...................................................................
+....................................................................................
+..................................................................................................
+...............................................................................................................
+// WAP to find longest consecutive characters
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string findlcons(string str)
+{
+	int i=1,max=0,cur=1,start=0,cstart=0;
+	
+	while(str[i]!='\0')
+	{
+		if(str[i]==str[i-1])
+		{
+			++cur;
+			if(max<cur)
+			{
+				max=cur;
+				start=cstart;
+			}
+		}
+		else
+		{
+			cur=1;
+			cstart=i;
+		}
+		++i;
+	}
+	return str.substr(start,max);
+}
+
+int main()
+{
+	string str;
+	cin>>str;
+	
+	cout<<"Longest consecutive character is: "<<findlcons(str);
+}
