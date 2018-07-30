@@ -1,7 +1,7 @@
 Problem : Given two strings. WAP to check if one is a rotation of another by k place
           Time complexity should be linear
     
-..............................................................
+.............................................................. 
 
 // WAP to check if one string is rotation of other by k places
 // do it inplace and in linear time
