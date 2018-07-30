@@ -1,0 +1,46 @@
+Problem: WAP to rotate an array by k in-place and linear time
+
+the idea is to use reversal algorithm
+
+.................................................................
+
+// WAP to rotate a string by k in-place and in linear time complexity
+// Reversal algorithm is used
+#include<bits/stdc++.h>
+using namespace std;
+
+void reverse(string &str,int s,int e)
+{
+	while(s<e)
+	{
+		char temp=str[s];
+		str[s]=str[e];
+		str[e]=temp;
+		++s;
+		--e;
+	}
+}
+
+string rotate(string str,int k )
+{
+	int len=str.length();
+	k=k%len;
+	
+	if(len==1 || k==len)
+	return str;
+	
+	reverse(str,0,k-1);
+	reverse(str,k,len-1);
+	reverse(str,0,len-1);
+	
+	return str;
+}
+
+int main()
+{
+	string str;
+	int k;
+	cin>>str>>k;
+	
+	cout<<"String <"<<str<<"> after rotation is : "<<rotate(str,k);
+}
