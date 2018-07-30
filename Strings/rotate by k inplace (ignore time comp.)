@@ -1,0 +1,45 @@
+Problem: WAP to rotate the given string by k inplace. for the time being time complexity can be ignored
+
+.....................................................................
+
+// Write a program to rotate a string by k places inplace. Ignore the time complexity
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string rotate(string str,int k)
+{
+	// Assuming string is of length >=1 
+	
+	// find the length of the string
+	int len=str.length();
+	
+	// fold k to be in a range <= len of string
+	k=k%len;
+	
+	// if len==1 or len==k then string will be same
+	if(len==1 || k==len)
+	return str;
+	
+	// else
+	
+	for(int i=1;i<=k;i++)
+	{
+		char c=str[0];
+		
+		for(int j=0;j<len-1;j++)
+		str[j]=str[j+1];
+		str[len-1]=c;
+	}
+	return str;
+}
+
+int main()
+{
+	// program to rotate a given string by k places
+	string str;
+	int k;
+	cin>>str>>k;
+	cout<<str<<" after rotating by "<<k<<" places : "<<rotate(str,k);
+	
+}
