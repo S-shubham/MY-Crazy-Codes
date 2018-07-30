@@ -3,7 +3,7 @@ Problem : WAP to check if a given string is a panagram or not
 	  Upper Case and Lower case letters will be treated same
 .........................................................................
 
-// check if the given string is a panagram or not
+// check if the given string is a panagram or not 
 
 #include<bits/stdc++.h>
 using namespace std;
