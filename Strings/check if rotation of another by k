@@ -1,0 +1,66 @@
+Problem : Given two strings. WAP to check if one is a rotation of another by k place
+          Time complexity should be linear
+    
+..............................................................
+
+// WAP to check if one string is rotation of other by k places
+// do it inplace and in linear time
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// to rotate in-place in linear time
+void reverse(string & str,int s,int e)
+{
+	while(s<e)
+	{
+		char temp=str[s];
+		str[s]=str[e];
+		str[e]=temp;
+		++s;
+		--e;
+	}
+}
+
+string rotate(string str,int k,int len)
+{
+	reverse(str,0,k-1);
+	reverse(str,k,len-1);
+	reverse(str,0,len-1);
+	
+	return str;
+}
+
+bool check(string str1,string str2,int k)
+{
+	int len1=str1.length();
+	int len2=str2.length();
+	
+	if(len1!=len2)
+	return false;
+	
+	k=k%len1;
+	
+	if(rotate(str1,k,len1)==str2)
+	return true;
+	
+	k=(k*2)%len1;
+	
+	if(rotate(str2,k,len1)==str1)
+	return true;
+	
+	return false;
+}
+
+int main()
+{
+
+	string str1,str2;
+	int k;
+	cin>>str1>>str2>>k;
+	
+	if(check(str1,str2,k))
+	cout<<"Yes it is a rotation by k ";
+	else
+	cout<<"No !!!!!!!!!!";
+}
