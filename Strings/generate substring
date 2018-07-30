@@ -1,0 +1,23 @@
+Problem :- Given a string, generate all possible sub-string
+
+.......................
+This is a O(n^2) approach with O(1) space
+.........................
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	string str;
+	cin>>str;
+	int len=str.length();
+	for(int i=1;i<=len;i++)
+	{
+		cout<<"\nlength "<<i<<"\n";
+		for(int j=0;j<=(len-i);j++)
+		{
+			cout<<str.substr(j,i)<<"\n";
+		}
+	}
+}
