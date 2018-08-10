@@ -38,3 +38,43 @@ int main()
 		cout<<"\nMax of Min for window size <"<<i<<"> is : "<<v[i-1];
 	}
 }
+
+
+........................................................................................
+............................O(1) space with same time complexity..............
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void findit(vector<int> v,int n)
+{
+
+	for(int i=1;i<=n;i++)
+	{
+		int minto=INT_MIN;
+		for(int j=0;j<=n-i;j++)
+		{
+			int min=v[j];
+			for(int k=j+1;k<i+j;k++)
+			if(v[k]<min)
+			min=v[k];
+			
+		if(min>minto)
+		minto=min;
+		}
+		
+		cout<<"\nMax of Min for window size <"<<i<<"> is : "<<minto;
+	}
+
+}
+
+int main()
+{
+	vector<int> arr {10, 20, 30, 50, 10, 70, 30};
+	int n=arr.size();
+	
+	findit(arr,n);
+	
+}
+
+
