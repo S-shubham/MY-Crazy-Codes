@@ -1,0 +1,33 @@
+
+https://www.geeksforgeeks.org/next-greater-element/
+
+............................................O(n^2)........................................
+
+// Program to find the next greater element in the given array
+// next greater element is defined as the first element to the right of an element having a greater value
+// and if no greater value exists then print -1 for that element 
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	vector<int> arr {4,5,2,25};
+	int n=arr.size();
+	for(int i=0;i<n-1;i++)
+	{
+		int j;
+		for(j=i+1;j<n;j++)
+		{
+			if(arr[j]>arr[i])
+			{
+				cout<<"for <"<<arr[i]<<"> : "<<arr[j]<<" ";
+				break;
+			}
+			
+		}
+		if(j==n)
+			cout<<"for <"<<arr[i]<<"> : "<<-1<<" ";
+	}
+			cout<<"for <"<<arr[n-1]<<"> : "<<-1<<" ";
+}
