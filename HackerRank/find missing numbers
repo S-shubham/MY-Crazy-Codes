@@ -51,3 +51,81 @@ int main()
 	
 }
 
+
+......................................................................
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<string> split_string(string);
+
+// Complete the missingNumbers function below.
+vector<int> missingNumbers(vector<int> arr, vector<int> brr) {
+
+    int n=brr.size();
+    unordered_multiset<int> ms;
+    for(int i=0;i<n;i++)
+    {
+        ms.insert(brr[i]);
+    }
+    cout<<"\n n is : "<<n;
+    cout<<"\n size of multiset is : "<<ms.size();
+    int m=arr.size();
+    for(int i=0;i<m;i++)
+    {
+        auto itr=ms.find(arr[i]);
+        auto itr2=itr;
+        itr2++;
+		ms.erase(itr,itr2);
+    }
+    cout<<"\nafter erasing it is : "<<ms.size();
+    set<int>s;
+    for(auto i:ms)
+    s.insert(i);
+    vector<int>v;
+    for(auto i:s)
+        v.push_back(i);
+    sort(v.begin(),v.end());
+    
+    
+    return v;
+
+}
+
+int main()
+{
+        
+    fstream fin;
+	fin.open("myin.txt");
+    int n;
+    fin>>n;
+    vector<int> arr;
+    int a;
+    while(n>0)
+    {
+    	fin>>a;
+    	arr.push_back(a);
+    	--n;
+	}
+    
+    fin>>n;
+    vector<int> brr;
+    while(n>0)
+    {
+    	fin>>a;
+    	brr.push_back(a);
+    	--n;
+	}
+	cout<<"\n size of arr is "<<arr.size();
+	cout<<"\n size of brr is "<<brr.size();
+	vector<int> res=missingNumbers(arr,brr);
+	cout<<"\nReturned value is: ";
+	for(auto i:res)
+	cout<<i<<" ";
+	
+	
+}
+
+
