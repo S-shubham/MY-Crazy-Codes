@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	map<char,int> mp;
+	string str="aabbcaaba";
+	int i=0;
+	while(str[i]!='\0')
+	{
+		if(mp.find(str[i])==mp.end())
+		{
+			mp[str[i]]=1;
+		}
+		else
+		++mp[str[i]];
+		
+		++i;
+	}
+	// storing in vectors to find the permutation 
+  //.......................................
+	cout<<"\n Count of characters are : ";
+	vector<char>c;
+	vector<int>cn;
+	for(auto i:mp)
+	{
+		c.push_back(i.first);
+		cn.push_back(i.second);
+	}
+	mp.erase(mp.begin(),mp.end());
+	
+}
