@@ -1,0 +1,113 @@
+
+https://www.geeksforgeeks.org/write-a-c-program-to-calculate-size-of-a-tree/
+
+
+.........................................................................................
+
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+	int data;
+	node* left;
+	node* right;
+};
+
+void insert( node* &root,int data)
+{
+	node * temp=new node();
+	temp->data=data;
+	temp->left=NULL;
+	temp->right=NULL;
+	if(root==NULL)
+	{
+		root=temp;
+		return;
+	}
+	node * trav=root;
+	while(1)
+	{
+		if(trav->data > data)
+		{
+			if(trav->left==NULL)
+			{
+				trav->left=temp;
+				return;
+			}
+			else
+			{
+				trav=trav->left;
+				continue;
+			}
+		}
+		else if(trav->data<data)
+		{
+			if(trav->right==NULL)
+			{
+				trav->right=temp;
+				return;
+			}
+			else
+			{
+				trav=trav->right;
+				continue;
+			}
+		}
+		else
+		return;
+	}
+	
+}
+
+node* search(node * root,int x)
+{
+	if(!root)
+	return NULL;
+	
+	if(root->data==x)
+	return root;
+	else if(root->data < x)
+	return search(root->right,x);
+	else
+	return search(root->left,x);
+}
+
+void inorder(node * root)
+{
+	if(!root)
+	return;
+	inorder(root->left);
+	cout<<root->data<<"->";
+	inorder(root->right);
+}
+
+int sizeUtil(node* root)
+{
+	int left=0,right=0;
+	if(root->left)
+	left= sizeUtil(root->left)+1;
+	if(root->right)
+	right= sizeUtil(root->right)+1;
+	
+	return left+right;
+}
+int size(node* root)
+{
+	return sizeUtil(root)+1;
+}
+int main()
+{
+	node * root=NULL;
+	vector<int> v {43,24,15,65,3,49,58,11};
+	
+	for(int i=0;i<v.size();i++)
+	{
+		insert(root,v[i]);
+	}
+	
+	cout<<"\nInorder traversal of the tree is : ";
+	inorder(root);
+
+
+	cout<<"\nSize of the tree is : "<<size(root);	
+}
