@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+	int pos;
+	int count;
+};
+
+int  main()
+{
+	node r[5];
+	for(int i=0;i<5;i++)
+	{
+		r[i].pos=i;
+		r[i].count=i*i;
+	}
+	
+	cout<<"\nstructure element is: ";
+	for(int i=0;i<5;i++)
+	{
+		cout<<r[i].pos<<" -> "<<r[i].count;
+		cout<<"\n";
+	}
+		
+}
