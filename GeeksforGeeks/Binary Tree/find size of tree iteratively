@@ -1,0 +1,26 @@
+
+https://www.geeksforgeeks.org/write-program-calculate-size-tree-iterative/
+
+...................................................
+
+int size(node* root)
+{
+	if(!root)
+	return 0;
+	
+	queue<node*>q;
+	q.push(root);
+	
+	int count=0;
+	while(!q.empty())
+	{
+		node* temp=q.front();
+		q.pop();
+		++count;
+		if(temp->left)
+		q.push(temp->left);
+		if(temp->right)
+		q.push(temp->right);
+	}
+	return count;
+}
