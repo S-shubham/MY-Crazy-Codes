@@ -1,5 +1,14 @@
 
 https://www.geeksforgeeks.org/write-a-c-program-to-calculate-size-of-a-tree/
+..................................................................................
+
+int size(node* root)
+{
+	if(!root)
+	return 0;
+	
+	return size(root->left)+1+size(root->right);
+}
 
 
 .........................................................................................
