@@ -1,0 +1,63 @@
+https://www.geeksforgeeks.org/maximum-power-of-jump-required-to-reach-the-end-of-string/
+
+
+...............................................................................................
+
+// Maximum power jump required to reach the end of the string
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int searchZero(string str)
+{
+	int i=0;
+	int max=0,cur=0;
+	while(str[i]!='\0')
+	{
+		
+		++cur;
+	if(str[i]=='0')
+		{
+			if(max<cur)
+			max=cur;
+			cur=0;
+		}
+		++i;
+	}
+	return max;
+}
+
+int searchOne(string str)
+{
+	int i=0;
+	int max=0,cur=0;
+	while(str[i]!='\0')
+	{
+		++cur;
+		
+		if(str[i]=='1')
+		{
+			if(max<cur)
+			max=cur;
+			cur=0;
+		}
+		++i;
+	}
+	return max;
+}
+
+
+int findjump(string str)
+{
+	int n=str.length();
+	if(str[n-1]=='0')
+	return searchZero(str);
+	else
+	return searchOne(str);
+}
+
+int main()
+{
+	string str="11110";
+	cout<<"\nMax jump required is: "<<findjump(str);
+}
