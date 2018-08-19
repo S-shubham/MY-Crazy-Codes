@@ -8,7 +8,7 @@ using namespace std;
     
 bool isprime(int n)
 {
-	int limit=sqrt(n);
+	int limit=sqrt(n);  
 	if(n%2==0)
 	return 0;
 	for(int i=3;i<=limit;i=i+2)
