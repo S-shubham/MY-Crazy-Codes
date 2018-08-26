@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+int solve(vector<string> &A) {
+    
+    int len=A.size();
+    vector<int>v(len);
+    for(int i=0;i<len;i++)
+    {
+        string str=A[i];
+        int k=1;
+         str=str.substr(k)+str.substr(0,k);
+         ++k;
+        int count=1;
+        while(str!=A[i])
+        {
+            ++count;
+            int rot=k%(A[i].length());
+            str=str.substr(k)+str.substr(0,k);
+            ++k;
+        }
+        v[i]=count;
+    }
+   
+    long long ans = v[0];
+    for (int i = 1; i < len; i++)
+        {
+        	ans = (((v[i] * ans)) / (gcd(v[i], ans)));
+		}
+                
+    return ans;
+}
+
+int main()
+{
+	vector<string> v {"a","ababa","aba"};
+	cout<<solve(v);
+}
