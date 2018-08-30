@@ -1,0 +1,85 @@
+// The idea is to merge in O(1) time
+// You are not allowed to traverse any of the list to reach the end of the list for merging
+// The below mentioned code clears all the test cases
+.........................................................................................................
+
+// program to merge two circular linked list
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+};
+
+void insert(listnode* &last,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(last==NULL)
+	{
+		last=temp;
+		temp->next=temp;
+	}
+	else
+	{
+		temp->next=last->next;
+		last->next=temp;
+	}
+}
+
+void merge(listnode* l1,listnode* l2, listnode* &l3)
+{
+	if(!l1)
+	{
+		l3=l2;
+		return;
+	}
+	else if(!l2)
+	{
+		l3=l1;
+		return;
+	}
+	else
+	{
+		listnode* later=l1;
+		l1=l1->next;
+		listnode* temp=l1->next;
+		l1->next=l2->next;
+		l2->next=temp;
+		l3=later;
+		return;
+	}
+}
+
+void printlist(listnode* head)
+{
+	for(listnode* cur=head->next;cur!=head;cur=cur->next)
+	cout<<cur->data<<" ";
+	cout<<head->data;
+}
+
+int main()
+{
+	listnode * head1=NULL;
+	listnode* head=NULL;
+	vector<int> v1 {6,7,8,9,10,11};
+	vector<int> v {0};
+	//Testing for single input
+	insert(head,v[0]);
+	for(int i=0;i<v1.size();i++)
+	{
+		insert(head1,v1[i]);
+		
+	}
+	
+	listnode* head3;
+	merge(head1,head,head3);
+	cout<<"\nList after Merge  is: ";
+	printlist(head3);
+}
