@@ -1,0 +1,51 @@
+
+
+https://www.spoj.com/problems/PRIME1/
+
+...............................................................................
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int t;
+	cin>>t;
+	vector<vector<int> > v(t);
+	for(int i=0;i<t;i++)
+	{
+		int m,n;
+		cin>>m>>n;
+		v[i].push_back(m);
+		v[i].push_back(n);
+	}
+	
+	
+	for(int i=0;i<t;i++)
+	{
+		int m,n;
+		m=v[i][0];
+		n=v[i][1];
+		if(m==1 || m==2)
+		{
+			cout<<2<<"\n";
+			m=3;
+		}
+		for(int j=m;j<=n;j++)
+		{
+			int flag=0;
+			int limit=sqrt(j);
+			++limit;
+			for(int k=2;k<=limit;k++)
+			{
+				if(j%k==0)
+				{
+					flag=1;
+					break;
+				}
+			}
+			if(!flag)
+			cout<<j<<"\n";
+		}
+		cout<<"\n";
+	}
+}
