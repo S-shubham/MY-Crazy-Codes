@@ -1,0 +1,89 @@
+insert into a list before an element x
+it is guaranteed that x is present in the list
+
+...................................................................................................................
+
+// WAP to insert in a list before an element
+// it is guaranteed that element is present in the list
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+};
+
+void insert(listnode* &head,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=temp;
+	}
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+}
+
+void insertx(listnode* &head,int data,int k)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(head->data==k)
+	{
+		temp->next=head;
+		head=temp;
+		return;
+	}
+	for(listnode* cur=head;cur;cur=cur->next)
+	{
+		if(cur->next)
+		{
+			if(cur->next->data==k)
+			{
+				temp->next=cur->next;
+				cur->next=temp;
+				return;
+			}
+		}
+	}
+}
+
+bool search(listnode* head,int k)
+{
+	for(listnode* current=head;current;current=current->next)
+	if(current->data==k)
+	return true;
+	return false;	
+	
+}
+
+void printlist(listnode* head)
+{
+	for(listnode* cur=head;cur;cur=cur->next)
+	cout<<cur->data<<" ";
+}
+int main()
+{
+	listnode * head=NULL;
+	
+	vector<int> v {0,1,2,3,4,5};
+	for(int i=0;i<v.size();i++)
+	{
+		insert(head,v[i]);
+	}
+	cout<<"\nList before insertion at x is: ";
+	printlist(head);
+	insertx(head,10,0);
+	cout<<"\nList after insertion is: ";
+	printlist(head);
+}
