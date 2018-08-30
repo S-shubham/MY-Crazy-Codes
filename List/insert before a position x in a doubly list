@@ -1,0 +1,99 @@
+// Program to insert after an element x in a doubly linked list
+// It is not guaranteed that element will be present in the list
+// If element is not found then insert at beginning
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+		listnode* prev;
+};
+
+//Function to insert in doubly linked list
+
+void insert(listnode* &head,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	temp->prev=NULL;
+	
+	if(!head)
+	{
+		head=temp;
+	}
+	else
+	{
+		head->prev=temp;
+		temp->next=head;
+		head=temp;
+	}
+}
+
+void insertx(listnode* &head,int data,int x)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	temp->prev=NULL;
+	
+	if(!head)
+	{
+		insert(head,data);
+		return;
+	}
+	
+	if(head->data==x)
+	{
+		temp->next=head;
+		head->prev=temp;
+		head=temp;
+		return;
+	}
+	else
+	{
+		listnode*cur=head->next;
+		for(;cur;cur=cur->next)
+		{
+			if(cur->data==x)
+			{
+				temp->next=cur;
+				temp->prev=cur->prev;
+				cur->prev=temp;
+				temp->prev->next=temp;
+				return;
+			}
+		}
+		// If the control reaches here means the element x is not present in the list
+		
+		temp->next=head;
+		head->prev=temp;
+		head=temp;
+		return;
+		
+	}
+}
+
+
+void printlist(listnode* head)
+{
+	for(listnode* cur=head;cur;cur=cur->next)
+	cout<<cur->data<<" ";
+}
+
+int main()
+{
+	listnode * head=NULL;
+	vector<int> v {};
+	for(int i=0;i<v.size();i++)
+	{
+		insert(head,v[i]);
+	}
+	insertx(head,45,3);
+	cout<<"\nElement in the list after insertion is : ";
+	printlist(head);
+}
