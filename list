@@ -1,0 +1,52 @@
+implementation of list
+..........................................
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+};
+
+void insert(listnode* &head,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=temp;
+	}
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+}
+
+bool search(listnode* head,int k)
+{
+	for(listnode* current=head;current;current=current->next)
+	if(current->data==k)
+	return true;
+	return false;	
+	
+}
+
+int main()
+{
+	listnode * head=NULL;
+	
+	vector<int> v {0,1,2,3,4,5};
+	for(int i=0;i<v.size();i++)
+	{
+		insert(head,v[i]);
+	}
+	if(search(head,3))
+	cout<<"\nElement found !!!!!";
+	else
+	cout<<"\nElement not found !!!!";
+}
