@@ -1,0 +1,52 @@
+// Program to implement a circular linked list
+
+.........................................................................
+
+// implementation of a singly circular linked list
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+};
+
+void insert(listnode* &last,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(last==NULL)
+	{
+		last=temp;
+		temp->next=temp;
+	}
+	else
+	{
+		temp->next=last->next;
+		last->next=temp;
+	}
+}
+
+void printlist(listnode* head)
+{
+	for(listnode* cur=head->next;cur!=head;cur=cur->next)
+	cout<<cur->data<<" ";
+	cout<<head->data;
+}
+
+int main()
+{
+	listnode * head1=NULL;
+	vector<int> v1 {6,7,8,9,10,11};
+	for(int i=0;i<v1.size();i++)
+	{
+		insert(head1,v1[i]);
+	}
+	
+	cout<<"\nList after insertion is: ";
+	printlist(head1);
+}
