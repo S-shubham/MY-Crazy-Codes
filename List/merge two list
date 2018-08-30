@@ -1,0 +1,136 @@
+// Wap to delete a node from the list
+//it is not guaranteed that x is present in the list
+#include<bits/stdc++.h>
+using namespace std;
+
+class listnode{
+	public:
+		int data;
+		listnode* next;
+};
+
+void insert(listnode* &head,int data)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(head==NULL)
+	{
+		head=temp;
+	}
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+}
+
+void insertx(listnode* &head,int data,int k)
+{
+	listnode* temp=new listnode();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(head->data==k)
+	{
+		temp->next=head;
+		head=temp;
+		return;
+	}
+	for(listnode* cur=head;cur;cur=cur->next)
+	{
+		if(cur->next)
+		{
+			if(cur->next->data==k)
+			{
+				temp->next=cur->next;
+				cur->next=temp;
+				return;
+			}
+		}
+	}
+}
+
+bool deletex(listnode* &head,int x)
+{
+	if(head->data==x)
+	{
+		listnode* d=head;
+		head=head->next;
+		delete(d);
+		d=NULL;
+		return true;
+	}
+	for(listnode* cur=head;cur;cur=cur->next)
+	{
+		if(cur->next)
+		{
+			if(cur->next->data==x)
+			{
+				listnode* d=cur->next;
+				cur->next=cur->next->next;
+				delete(d);
+				d=NULL;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool search(listnode* head,int k)
+{
+	for(listnode* current=head;current;current=current->next)
+	if(current->data==k)
+	return true;
+	return false;	
+	
+}
+
+void printlist(listnode* head)
+{
+	for(listnode* cur=head;cur;cur=cur->next)
+	cout<<cur->data<<" ";
+}
+
+void merge(listnode* l1,listnode* l2, listnode* &l3)
+{
+	if(!l1 && !l2)
+	return;
+	else if(!l1)
+	{
+		l3=l2;
+		return;
+	}
+	else if(!l2)
+	{
+		l3=l1;
+		return;
+	}
+	else{
+		listnode* cur;
+		for(cur=l1;cur->next!=NULL;cur=cur->next);
+		cur->next=l2;
+		l3=l1;
+		return;
+	}
+	
+}
+
+int main()
+{
+	listnode * head=NULL;
+	listnode * head1=NULL;
+	vector<int> v {0,1,2,3,4,5};
+	vector<int> v1 {6,7,8,9,10,11};
+	for(int i=0;i<v.size();i++)
+	{
+		insert(head,v[i]);
+		insert(head1,v1[i]);
+	}
+	listnode* head2=NULL;
+	merge(head,head1,head2);
+	cout<<"\nThe final list after merging is: ";
+	printlist(head2);
+}
