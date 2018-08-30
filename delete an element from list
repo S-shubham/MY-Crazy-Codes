@@ -56,7 +56,10 @@ bool deletex(listnode* &head,int x)
 {
 	if(head->data==x)
 	{
+		listnode* d=head;
 		head=head->next;
+		delete(d);
+		d=NULL;
 		return true;
 	}
 	for(listnode* cur=head;cur;cur=cur->next)
@@ -65,7 +68,10 @@ bool deletex(listnode* &head,int x)
 		{
 			if(cur->next->data==x)
 			{
+				listnode* d=cur->next;
 				cur->next=cur->next->next;
+				delete(d);
+				d=NULL;
 				return true;
 			}
 		}
