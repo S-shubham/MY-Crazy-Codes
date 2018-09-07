@@ -1,0 +1,55 @@
+The idea is to generate all odd length palindromes only and check if it is prime or not as well as it should be greater than n
+
+All even length primes are divisible by 11 so they won't be prime except 11 itself
+
+.........................................................................................................
+
+
+// Generate next palindrome prime given a no. n
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isprime(int n)
+{
+	int limit=sqrt(n);
+	bool flag=0;
+	for(int i=2;i<=limit+1;i++)
+	{
+		if(n%i==0)
+		{
+			flag=1;
+			break;
+		}
+	}
+	if(flag)
+	return false;
+	return true;
+}
+
+int nextPrimePalindrome(int n)
+{
+	if(n>=7 && n<11)
+	return 11;
+	int i=1;
+	for(;i<INT_MAX;i++)
+	{
+		int temp=i;
+		int res=i;
+		temp=temp/10;
+		while(temp>0)
+		{
+			res=res*10+temp%10;
+			temp=temp/10;
+		}
+		if(res>n && isprime(res))
+		return res;
+	}
+}
+
+int main()
+{
+	cout<<nextPrimePalindrome(6);
+	
+}
