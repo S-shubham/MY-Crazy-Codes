@@ -1,0 +1,62 @@
+Givne a number n, Generate all palindrome from  1 to n 
+
+...................................................................................
+
+//WAP to generate all palindrome no.s from 1 to n
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void GeneratePalindrome(int n)
+{
+	
+	int i=1;
+	int odd=i,even=i;
+	
+	int flag=0;
+	//Loop until odd length or even length palindrome being generated is smaller than n
+	while(odd<n || even<n)
+	{
+		int oddT=i,evenT=i;
+		odd=i,even=i;
+		// using flag to avoid calculating even length palindrome
+		// once we find the first even length palindrome which is greater than n then henceforth all the even length palindrome will be greater
+		
+		if(!flag)
+		{
+			// Calculating even length palindrome
+			while(evenT>0)
+			{
+				even=even*10+evenT%10;
+				evenT=evenT/10;
+			
+			}
+			if(even>n)
+			flag=1;
+			else
+			cout<<even<<" ";
+		}
+		// creating palindrome for odd length
+		
+		oddT=oddT/10;
+		while(oddT>0)
+		{
+			odd=odd*10+oddT%10;
+			oddT=oddT/10;
+		}
+		if(odd>n)
+		break;
+		else
+		cout<<odd<<" ";
+		
+		++i;
+			
+	}
+}
+
+int main()
+{
+	int n=10004;
+	GeneratePalindrome(n);	
+}
