@@ -1,0 +1,51 @@
+// This is my own implementation of rabin karp algorithm
+// Though the hash function has not been optimized to use past value to efficiently calculate the new hash value
+// Rolling window hash method should be used for efficient operation
+
+.........................................................................................
+
+// WAP to find the no of rotations required to make the string palindrome
+// It is guaranteed that after rotation the string will become palindrome
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int findhash(string str,int s,int e)
+{
+	int res=0;
+	while(s<=e)
+	{
+		res=(res+(str[s]-'A')*3)*3;
+		++s;
+	}	
+	return res;
+}
+
+void StringMatch(string test,string pat)
+{
+	int len=pat.length();
+	int hash_value=findhash(pat,0,len-1);
+	
+	int len_test=test.length();
+	for(int i=0;i<=len_test-len;++i)
+	{
+		int cur_hash=findhash(test,i,len-1+i);
+		if(cur_hash==hash_value)
+		{
+			int j;
+			for(j=0;j<len;j++)
+			{
+				if(test[i+j]!=pat[j])
+				break;
+			}
+			if(j==len)
+			cout<<i<<" ";
+		}
+	}
+}
+
+int main()
+{
+	string test="AABAACAADAABAABA",pat="AABA";
+	StringMatch(test,pat);
+}
