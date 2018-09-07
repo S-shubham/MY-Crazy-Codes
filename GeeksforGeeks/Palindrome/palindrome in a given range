@@ -1,0 +1,76 @@
+// A simple approach to run a loop from the beginning of the given range uptill the end of the range
+// I dont like this approach becoz in the worst case my range could be from 1 to n and this would not be beneficial
+// I have an approach which is better
+
+
+
+................................................................................................................
+
+//WAP to generate all palindrome no.s in a given range
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void GeneratePalindrome(int s,int e)
+{
+	
+	int i=s/10;
+	int odd=i,even=i;
+	
+	int flag=0;
+	int counter=0;
+	//Loop until odd length or even length palindrome being generated is smaller than n
+	while(odd<e || even<e)
+	{
+		
+		int oddT=i,evenT=i;
+		odd=i,even=i;
+		// using flag to avoid calculating even length palindrome
+		// once we find the first even length palindrome which is greater than n then henceforth all the even length palindrome will be greater
+		
+		if(!flag)
+		{
+			// Calculating even length palindrome
+			while(evenT>0)
+			{
+				even=even*10+evenT%10;
+				evenT=evenT/10;
+			
+			}
+			if(even>e)
+			flag=1;
+			else if(even>=s && even<=e)
+			{
+				cout<<even<<" ";
+				++counter;
+			}
+		}
+		// creating palindrome for odd length
+		
+		oddT=oddT/10;
+		while(oddT>0)
+		{
+			odd=odd*10+oddT%10;
+			oddT=oddT/10;
+		}
+		if(odd>e)
+		break;
+		else if(odd<=e && odd>=s)
+		{
+			cout<<odd<<" ";
+			++counter;
+		}
+		
+		++i;
+			
+	}
+	
+	cout<<"\nTotal count is: "<<counter;
+}
+
+int main()
+{
+	int s=101,e=10004;
+	GeneratePalindrome(s,e);	
+}
