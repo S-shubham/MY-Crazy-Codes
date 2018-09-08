@@ -1,0 +1,19 @@
+// The most basic and first ever algorithm of all time is euclids algorithm to find the hcf of two given numbers
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int hcf(int a,int b)
+{
+	int temp=a%b;
+	if(temp==0)
+	return b;
+	hcf(b,temp);
+	
+}
+
+int main()
+{
+	int a=544,b=119;
+	cout<<hcf(a,b);		
+}
