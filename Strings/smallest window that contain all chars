@@ -1,0 +1,46 @@
+
+
+
+..............................................................
+
+// Given a string find the smallest sub-string which has maximum no of different characters
+// Idea is to keep track of max. different characters in all substrings of lenth x
+// start scanning from 1 to n and print the max value
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int  main()
+{
+	string str="aabcbcdbca";
+	
+	int len=0;
+	set<char>s;
+	while(str[len]!='\0')
+	{
+		if(s.find(str[len])==s.end())
+		s.insert(str[len]);
+		++len;
+	}
+	int x=s.size();
+	int min=len;
+	for(int i=x;i<len;i++)
+	{
+		
+		for(int j=0;j<=len-i;j++)
+		{	set<char>s;
+			for(int k=j;k<j+i;k++)
+			if(s.find(str[k])==s.end())
+			s.insert(str[k]);
+			
+			if(s.size()==x)
+			{
+				cout<<i;
+				return 0;
+			}
+		}
+		
+	}
+	
+	
+}
