@@ -1,0 +1,46 @@
+
+https://www.geeksforgeeks.org/length-smallest-sub-string-consisting-maximum-distinct-characters/
+
+
+
+.......................A Brute force approach with O(n^3)......................
+
+// Given a string find the smallest sub-string which has maximum no of different characters
+// Idea is to keep track of max. different characters in all substrings of lenth x
+// start scanning from 1 to n and print the max value
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int  main()
+{
+	string s="GEEKSGEEKSFOR";
+	
+	int n=s.length(); // O(n)
+	int len[n+1]={0};  // O(n)
+	len[1]=1;
+	for(int i=2;i<=n;i++)	// O(n)
+	{
+		int max=0;	
+		for(int j=0;j<=n-i;j++)  // O(n) O(n)
+		{
+			set<char>ss;
+			
+			for(int k=j;k<j+i;k++)		// O(n)O(n)O(n)
+			{
+				if(ss.find(s[k])==ss.end())
+				ss.insert(s[k]);
+			}
+			if(ss.size()>max)
+			max=ss.size();
+		}
+		len[i]=max;
+	}
+	int max=0;
+	for(int i=1;i<=n;i++)   //  O(n)
+	if(len[i]>len[max])
+	max=i;
+	
+	cout<<"\nSmallest- length substring is: "<<max;
+	
+}
