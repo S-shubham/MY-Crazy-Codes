@@ -1,0 +1,54 @@
+
+https://www.geeksforgeeks.org/count-number-ways-reach-given-score-game/
+
+
+.....................................................................................................................
+
+// You are given a no. n and your current score is 0. you can increment your score by either 3,5 or 10. find the no of ways to reach n
+#include<bits/stdc++.h>
+using namespace std;
+
+void counter(int n,int & count,int arr[],int x)
+{
+	if(n==0)
+	{
+		++count;
+		cout<<" Success : ";
+		for(int i=0;i<x;i++)
+		cout<<arr[i]<<"->";
+		cout<<"\n";
+		return;
+	}
+	if(n>=3)
+	{
+		if(n>=3)
+		{
+			arr[x]=3;
+			counter(n-3,count,arr,x+1);
+		}
+		
+		if(n>=5)
+		{
+			arr[x]=5;
+			counter(n-5,count,arr,x+1);
+		}
+		
+		if(n>=10)
+		{
+			arr[x]=10;
+			counter(n-10,count,arr,x+1);
+		}
+	}
+	
+	
+}
+
+int  main()
+{
+	int n=20;
+	int count=0;
+	int arr[10]={0};
+	int x=0;
+	counter(n,count,arr,x);
+	cout<<count;
+}
