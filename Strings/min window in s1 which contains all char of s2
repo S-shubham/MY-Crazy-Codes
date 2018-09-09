@@ -1,0 +1,51 @@
+
+https://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/
+
+
+....................................................................
+
+
+// Given two strings s1 and s2 find the smallest sub-string in s1 which has all the characters present in s2
+// This is O(n^3) complexity approach
+// could be done in better complexity
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int  main()
+{
+	string s1="this is a test string";
+	string s2="tist";
+	int len=0;
+	set<char>s;
+	while(s2[len]!='\0')
+	{
+		if(s.find(s2[len])==s.end())
+		s.insert(s2[len]);
+		++len;
+	}
+	int x=s.size();
+	cout<<"\nx is: "<<x;
+	len=s1.length();
+	for(int i=x;i<len;i++)
+	{
+		
+		for(int j=0;j<=len-i;j++)
+		{	set<char>s1s;
+			for(int k=j;k<j+i;k++)
+			if(s.find(s1[k])!=s.end())
+			s1s.insert(s1[k]);
+			
+			if(s1s.size()==x)
+			{
+				cout<<"\nSubstring is: "<<s1.substr(j,i);
+				cout<<"\nMinimum length is : ";
+				cout<<i;
+				return 0;
+			}
+		}
+		
+	}
+	
+	
+}
