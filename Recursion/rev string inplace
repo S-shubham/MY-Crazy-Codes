@@ -1,0 +1,22 @@
+// Write a program to reverse a string in place using recursion
+#include<bits/stdc++.h>
+using namespace std;
+
+void reverse(string &s,int i,int j)
+{
+	if(i<j)
+	{
+		swap(s[i],s[j]);
+		reverse(s,i+1,j-1);
+	}
+}
+
+
+int main()
+{
+	string s="ram is my lord";
+	
+	int len=s.length();
+	reverse(s,0,len-1);
+	cout<<"\nThe reversed string is: "<<s;;
+}
