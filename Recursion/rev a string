@@ -1,0 +1,19 @@
+// Write a recursive program to reverse a string
+#include<bits/stdc++.h>
+using namespace std;
+
+string reverse(string s,string r,int i)
+{
+	if(s[i]=='\0')
+	return "";
+	r=reverse(s,r,i+1)+s[i];
+	return r;
+}
+
+int main()
+{
+	string s="ram is my lord";
+	string r="";
+	r=reverse(s,r,0);
+	cout<<"\nThe reversed string is: "<<r;
+}
