@@ -1,0 +1,28 @@
+// write a program to generate all possible binary strings by substituting wild card entries with either 0 or 1
+#include<bits/stdc++.h>
+using namespace std;
+
+void generate(string s,int i)
+{
+	if(s[i]=='\0')
+	{
+		cout<<s<<"\n";
+		return;
+	}
+	if(s[i]=='?')
+	{
+		s[i]='0';
+		generate(s,i+1);
+		s[i]='1';
+		generate(s,i+1);
+	}
+	else
+	generate(s,i+1);
+}
+
+
+int main()
+{
+	string s="1?11?00?1?";
+	generate(s,0);
+}
