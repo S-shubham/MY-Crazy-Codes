@@ -1,0 +1,29 @@
+// Write a program to reverse a string using stack
+#include<bits/stdc++.h>
+using namespace std;
+
+string reverse(string s)
+{
+	string r="";
+	int i=0;
+	stack<char>ss;
+	while(s[i]!='\0')
+	{
+		ss.push(s[i]);
+		++i;
+	}
+	while(!ss.empty())
+	{
+		r=r+ss.top();
+		ss.pop();
+	}
+	return r;
+}
+
+int main()
+{
+	string s="ram is my lord";
+	string r;
+	r=reverse(s);
+	cout<<"\nThe reversed string is: "<<r;
+}
