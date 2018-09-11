@@ -1,0 +1,19 @@
+// Round the given number to the nearest mulitple of 10
+// idea is to find the modulo if it is smaller than or equal to 5 then subtract it from original number
+// if it is greater than 5 then subtract it from number and then add 10 to the number
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin>>n;
+	int r=n%10;
+	if(r<=5)
+	n=n-r;
+	else
+	n=n-r+10;
+	cout<<"\n number is : "<<n;
+	
+}
