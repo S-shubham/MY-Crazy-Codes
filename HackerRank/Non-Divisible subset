@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int nonDivisibleSubset(int k, vector<int> S) {
+
+    if(k==1)
+        return 1;
+    int arr[k]={0};
+    for(auto &itr: S)
+    {
+        itr=itr%k;
+        ++arr[itr];
+    }
+    
+    int count=0;
+    if(arr[0]!=0)
+    count=1;
+    if(k%2==0)
+    {
+        int i=1,j=k-1;
+        while(i<j)
+        {
+            if(arr[i]>arr[j])
+                count+=arr[i];
+            else
+                count+=arr[j];
+            
+            ++i;
+            --j;
+        }
+        if(arr[k/2]!=0)
+            ++count;
+    }
+    else
+    {
+        int i=1,j=k-1;
+        while(i<j)
+        {
+            if(arr[i]>arr[j])
+                count+=arr[i];
+            else
+                count+=arr[j];
+            
+            ++i;
+            --j;
+        }
+    }
+    
+    return count;
+
+}
+
+
+int main()
+{
+	
+	
+	freopen ("input16.txt","r",stdin);
+	int n;
+	cin>>n;
+	vector<int>v(n);
+	int k;
+	cin>>k;
+	for(int i=0;i<n;i++)
+	cin>>v[i];
+	
+	cout<<nonDivisibleSubset(k,v);
+	
+	
+}
