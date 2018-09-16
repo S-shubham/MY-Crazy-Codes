@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve()
+{
+	long int a,n;
+	cin>>a>>n;
+	for(int i=1;i<INT_MAX;i++)
+	{
+		long long temp=((a*i)%n);
+		if(temp==1)
+		{
+			cout<<i<<" ";
+			return;
+		}
+	}
+	cout<<-1<<"\n";
+}
+
+int main()
+{
+	int T;
+	cin>>T;
+	for(int t=0;t<T;t++)
+	solve();
+}
