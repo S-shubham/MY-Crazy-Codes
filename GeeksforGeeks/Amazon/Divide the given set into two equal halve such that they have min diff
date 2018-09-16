@@ -1,0 +1,50 @@
+// given a set of n numbers divide it into two groups such that they have equal sum or has minimum difference
+// if n is even then set should be n/2 and n/2 else
+// set should be n/2 and n/2+1
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	vector<int>set1;
+	vector<int>set2;
+	int arr[] = {3, 1, 5, 9, 12}; 
+  	int n = sizeof(arr)/sizeof(arr[0]); 
+  	
+  	sort(arr,arr+n);
+  	
+  	int i=0,j=n-1;
+  	int set1sum=0,set2sum=0;
+  	while(i<j)
+  	{
+  		
+		if()
+		
+		set1.push_back(arr[i]);
+  		set1sum+=arr[i];
+  		set2.push_back(arr[j]);
+  		set2sum+=arr[j];
+  		++i;
+  		--j;
+	}
+	if(n%2!=0)
+	{
+		if(set1sum<set2sum)
+		set1sum+=arr[i];
+		else
+		set2sum+=arr[i];
+	}
+	
+	cout<<"Set1sum is : "<<set1sum;
+	cout<<"\nSet2sum is : "<<set2sum;
+	
+	cout<<"\nThe set1 is: ";
+	for(auto itr:set1)
+	cout<<itr<<" ";
+  	
+  	cout<<"\nThe set2 is: ";
+	for(auto itr:set2)
+	cout<<itr<<" ";
+  	
+}
