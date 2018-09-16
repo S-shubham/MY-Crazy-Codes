@@ -1,0 +1,32 @@
+Voting Fraud
+
+/........................................................................../
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve()
+{
+	int n;
+	cin>>n;
+	int arr[n];
+	set<int>s;
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+		s.insert(arr[i]);
+	}
+	
+	cout<<(n-s.size())<<"\n";
+	
+	
+}
+
+int main()
+{
+	int T;
+	cin>>T;
+	for(int t=0;t<T;t++)
+	solve();
+}
