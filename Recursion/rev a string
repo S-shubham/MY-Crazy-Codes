@@ -1,7 +1,7 @@
 // Write a recursive program to reverse a string
 #include<bits/stdc++.h>
 using namespace std;
-
+  
 string reverse(string s,string r,int i)
 {
 	if(s[i]=='\0')
