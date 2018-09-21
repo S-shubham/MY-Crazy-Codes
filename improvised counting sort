@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	int n=5;
+	int n=5; 
 	int arr[n]={5,4,8,2,6};
 	int count[n];
 	for(int i=0;i<n;i++)  // O(n)
