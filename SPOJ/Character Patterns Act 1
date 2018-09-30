@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void execute()
+{
+	int r,c;
+	cin>>r;
+	cin>>c;
+	
+	char ch='.';
+	for(int i=0;i<r;i++)
+	{
+		if(ch=='*')
+		ch='.';
+		else
+		ch='*';
+		char temp=ch;
+		for(int j=0;j<c;j++)
+		{
+			cout<<temp;
+			if(temp=='*')
+			temp='.';
+			else
+			temp='*';
+		}
+		cout<<"\n";
+	}
+	cout<<"\n";
+}
+
+int main() {
+	
+	int t;
+	cin>>t;
+	//freopen("a.txt","r",stdin);
+	
+	for(int i=0;i<t;i++)
+	{
+		execute();
+	}
+	return 0;
+}
