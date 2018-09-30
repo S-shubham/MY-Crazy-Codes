@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isSafe(int i,int j,int r,int c)
+{
+	if(i!=0 && i!=r-1 && j!=0 && j!=c-1)
+	return true;
+	else
+	return false;
+}
+
+
+void execute()
+{
+	int r,c;
+	cin>>r;
+	cin>>c;
+	
+	
+	for(int i=0;i<r;i++)
+	{
+		
+		for(int j=0;j<c;j++)
+		{
+			if(isSafe(i,j,r,c))
+			cout<<".";
+			else
+			cout<<"*";
+		}
+		cout<<"\n";
+	}
+	cout<<"\n";
+}
+
+int main() {
+	
+	int t;
+	cin>>t;
+	freopen("a.txt","r",stdin);
+	
+	for(int i=0;i<t;i++)
+	{
+		execute();
+	}
+	return 0;
+}
