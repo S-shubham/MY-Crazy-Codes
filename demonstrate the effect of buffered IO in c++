@@ -17,3 +17,23 @@ int main()
 	cout<<"the number is : "<<a;
 	cout<<"\nthe character is : "<<c;
 }
+
+
+.....................................................................
+
+In order to get rid of this problem we need to flush the input buffer after taking inputs
+
+// program to test how buffered  I/O can have unintended effects on our program
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int a;
+	char c;
+	cin>>a;
+  fflush(stdin);
+	cin>>c;
+	cout<<"the number is : "<<a;
+	cout<<"\nthe character is : "<<c;
+}
