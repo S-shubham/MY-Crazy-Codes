@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void print(int t)
+{
+	for(int i=0;i<t;i++)
+	cout<<"*";
+}
+
+void execute()
+{
+	int r,c,h,w;
+	cin>>r;
+	cin>>c;
+	cin>>h;
+	cin>>w;
+	
+	int a=r*h+r+1;
+	int b=c*w+c+1;
+	for(int i=0;i<a;i++)
+	{
+		if(i%(h+1)==0)
+		{
+			print(b);
+			cout<<"\n";
+			continue;
+		}
+		
+		
+		for(int j=0;j<b;j++)
+		{
+			if(j%(w+1)==0)
+			cout<<"*";
+			else
+			cout<<".";
+		}
+		cout<<"\n";
+	}
+	cout<<"\n";
+}
+
+int main() {
+	
+	int t;
+	cin>>t;
+	freopen("a.txt","r",stdin);
+	
+	for(int i=0;i<t;i++)
+	{
+		execute();
+	}
+	return 0;
+}
