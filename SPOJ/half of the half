@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+void execute()
+{
+	string str;
+	getline(cin,str);
+	
+	int len=str.length();
+	len=len/2;
+	int i=0;
+	while(i<len)
+	{
+		cout<<str[i];
+		i=i+2;
+	}
+	cout<<"\n";
+}
+
+int main() {
+	
+	int t;
+	cin>>t;
+	freopen("a.txt","r",stdin);
+	
+	for(int i=0;i<t;i++)
+	{
+		execute();
+	}
+	return 0;
+}
