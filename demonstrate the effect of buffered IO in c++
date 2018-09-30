@@ -1,0 +1,19 @@
+C++ has buffered I/O operation
+For the below mentioed program if we input "12D34" to an integer var it will discared the values from D onwards and it will be still sotred
+in the buffer which will cause next input to take the discarded value. This will definitely have unintended effect on your program. so 
+flushing the output buffer is a must
+......................................................
+
+// program to test how buffered  I/O can have unintended effects on our program
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int a;
+	char c;
+	cin>>a;
+	cin>>c;
+	cout<<"the number is : "<<a;
+	cout<<"\nthe character is : "<<c;
+}
