@@ -1,0 +1,92 @@
+
+https://www.geeksforgeeks.org/tilt-binary-tree/
+
+
+.......................................................................................
+
+
+// C program to extract leaves of a Binary Tree in a Doubly Linked List 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<bits/stdc++.h>
+using namespace std; 
+// Structure for tree and linked list 
+struct Node 
+{ 
+    int data; 
+    struct Node *left, *right; 
+}; 
+  
+// Utility function for allocating node for Binary Tree. 
+struct Node* newNode(int data) 
+{ 
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node)); 
+    node->data = data; 
+    node->left = node->right = NULL; 
+    return node; 
+} 
+  
+// Utility function for printing tree in In-Order. 
+void print(struct Node *root) 
+{ 
+    if (root != NULL) 
+    { 
+         print(root->left); 
+         printf("%d ",root->data); 
+         print(root->right); 
+    } 
+} 
+  
+// Utility function for printing double linked list. 
+void printList(struct Node *head) 
+{ 
+     while (head) 
+     { 
+         printf("%d ", head->data); 
+         head = head->left; 
+     } 
+} 
+
+int findtilt(Node* root,int &tilt)
+{
+	if(!root)
+	return 0;
+	
+	int left=findtilt(root->left,tilt);
+	int right=findtilt(root->right,tilt);
+	
+	tilt+=abs(left-right);
+	
+	return (left+right+root->data);
+}
+ 
+// Driver program to test above function 
+int main() 
+{ 
+//     struct Node *head = NULL; 
+//     struct Node *root = newNode(1); 
+//     root->left = newNode(2); 
+//     root->right = newNode(3); 
+//     root->left->left = newNode(4); 
+//     root->left->right = newNode(5); 
+//     root->right->right = newNode(6); 
+//     root->left->left->left = newNode(7); 
+//     root->left->left->right = newNode(8); 
+//     root->right->right->left = newNode(9); 
+//     root->right->right->right = newNode(10); 
+//  	
+  	Node* root = NULL; 
+    root = newNode(4); 
+    root->left = newNode(2); 
+    root->right = newNode(9); 
+    root->left->left = newNode(3); 
+    root->left->right = newNode(8); 
+    root->right->right = newNode(7);
+  	
+     int tilt=0;
+     findtilt(root,tilt);
+  	 cout<<"\nThe value of tilt is : "<<tilt;
+     
+    
+     return 0; 
+} 
