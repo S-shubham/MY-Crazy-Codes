@@ -1,0 +1,114 @@
+
+https://www.geeksforgeeks.org/find-next-right-node-given-key-set-2/
+
+.................................................................................Level order traversal using queue
+
+
+// C program to extract leaves of a Binary Tree in a Doubly Linked List 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<bits/stdc++.h>
+using namespace std; 
+// Structure for tree and linked list 
+struct Node 
+{ 
+    int data; 
+    struct Node *left, *right; 
+}; 
+  
+// Utility function for allocating node for Binary Tree. 
+struct Node* newNode(int data) 
+{ 
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node)); 
+    node->data = data; 
+    node->left = node->right = NULL; 
+    return node; 
+} 
+  
+// Utility function for printing tree in In-Order. 
+void print(struct Node *root) 
+{ 
+    if (root != NULL) 
+    { 
+         print(root->left); 
+         printf("%d ",root->data); 
+         print(root->right); 
+    } 
+} 
+  
+// Utility function for printing double linked list. 
+void printList(struct Node *head) 
+{ 
+     while (head) 
+     { 
+         printf("%d ", head->data); 
+         head = head->left; 
+     } 
+} 
+
+int findright(Node* root,int t)
+{
+	if(!root)
+	return 0;
+	
+	queue<Node* >q;
+	q.push(root);
+	while(!q.empty())
+	{
+		int len=q.size();
+		int flag=0;
+		while(len>0)
+		{
+			Node* temp=q.front();
+			q.pop();
+			
+			if(flag)
+			return temp->data;
+			
+			if(temp->data ==t)
+			flag=1;
+			
+			
+			if(temp->left)
+			q.push(temp->left);
+			if(temp->right)
+			q.push(temp->right);
+			--len;
+			
+			
+		}
+		if(flag)
+		return 0;
+	}
+}
+ 
+// Driver program to test above function 
+int main() 
+{ 
+     struct Node *head = NULL; 
+     struct Node *root = newNode(1); 
+     root->left = newNode(2); 
+     root->right = newNode(3); 
+     root->left->left = newNode(4); 
+     root->left->right = newNode(5); 
+     root->right->right = newNode(6); 
+     root->left->left->left = newNode(7); 
+     root->left->left->right = newNode(8); 
+     root->right->right->left = newNode(9); 
+     root->right->right->right = newNode(10); 
+  	
+//  	Node* root = NULL; 
+//    root = newNode(4); 
+//    root->left = newNode(2); 
+//    root->right = newNode(9); 
+//    root->left->left = newNode(3); 
+//    root->left->right = newNode(8); 
+//    root->right->right = newNode(7);
+//  	
+     
+     int right=findright(root,5);
+  	 cout<<"\nThe value of right is : "<<right;
+     
+    
+     return 0; 
+} 
