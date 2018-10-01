@@ -1,0 +1,67 @@
+iven a circular linked list and an integer k, you need to traverse the list till index k (first index is 1) and delete 
+the node at the kth index.
+Do this repeatedly until only a single node is left and return this node
+
+
+
+..................................................
+
+// In a circular list and an index k you have to delete the index k until there is just one node remaining in the list
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+	int data;
+	node * next;
+};
+
+node * head=NULL;
+void insert(int data)
+{
+	node* temp=new node();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(!head)
+	head=temp;
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+}
+
+int main()
+{
+	for(int i=10;i>=0;i--)
+	{
+		insert(i);
+	}
+	
+	node* trav=head;
+	while(trav->next)
+	trav=trav->next;
+	trav->next=head;
+	
+	
+	trav=head;
+	int k=4;
+	int i=1;
+	while(trav->next!=trav)
+	{
+		if(i%(k-1)==0)
+		{
+			cout<<"\nnode deleted is : "<<trav->next->data;
+			if(head==trav->next)
+			head=head->next;
+			trav->next=trav->next->next;
+			trav=head;
+			i=1;
+			continue;
+			
+		}
+		++i;
+		trav=trav->next;
+	}
+	
+}
