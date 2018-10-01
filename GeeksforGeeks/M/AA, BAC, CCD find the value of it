@@ -1,0 +1,35 @@
+if A=1, B=2, C=3, …, then write a function to return the number corresponding to the string. 
+Z would be 26, then it would be AA, which would be 27. What would BB be, or ABC, or ABB, etc.
+
+...............................///////////////////////////////////////.............................................
+
+// program to validate if the combination of brackets is valid or not
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void execute()
+{
+	string str;
+	cin>>str;
+	int len=str.length()-1;
+	int sum=0,i=0;
+	while(len>=0)
+	{
+		int temp=(str[len]-'A'+1)*pow(26,i);
+		++i,--len;
+		sum+=temp;
+	}
+	cout<<"\nThe value of : "<<str<<" is "<<sum;
+}
+
+
+int main()
+{
+	int t;
+	freopen("a.txt","r",stdin);
+	cin>>t;
+	for(int i=0;i<t;i++)
+	execute();
+	return 0;
+}
