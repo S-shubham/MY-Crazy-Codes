@@ -1,0 +1,102 @@
+
+https://www.geeksforgeeks.org/top-three-elements-binary-tree/
+
+............................................................................
+
+
+// C program to extract leaves of a Binary Tree in a Doubly Linked List 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<bits/stdc++.h>
+using namespace std; 
+// Structure for tree and linked list 
+struct Node 
+{ 
+    int data; 
+    struct Node *left, *right; 
+}; 
+  
+// Utility function for allocating node for Binary Tree. 
+struct Node* newNode(int data) 
+{ 
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node)); 
+    node->data = data; 
+    node->left = node->right = NULL; 
+    return node; 
+} 
+  
+// Utility function for printing tree in In-Order. 
+void print(struct Node *root) 
+{ 
+    if (root != NULL) 
+    { 
+         print(root->left); 
+         printf("%d ",root->data); 
+         print(root->right); 
+    } 
+} 
+  
+// Utility function for printing double linked list. 
+void printList(struct Node *head) 
+{ 
+     while (head) 
+     { 
+         printf("%d ", head->data); 
+         head = head->left; 
+     } 
+} 
+
+void topthree(Node* root,int &a,int &b,int &c)
+{
+	if(!root)
+	return;
+	
+	int t=root->data;
+	if(t>a)
+	{
+		c=b;
+		b=a;
+		a=t;
+	}
+	else if(t>b)
+	{
+		c=b;
+		b=t;
+	}
+	else if(t>c)
+	c=t;
+	
+	topthree(root->left,a,b,c);
+	topthree(root->right,a,b,c);
+}
+ 
+// Driver program to test above function 
+int main() 
+{ 
+     struct Node *head = NULL; 
+     struct Node *root = newNode(1); 
+     root->left = newNode(2); 
+     root->right = newNode(3); 
+     root->left->left = newNode(4); 
+     root->left->right = newNode(5); 
+     root->right->right = newNode(6); 
+     root->left->left->left = newNode(7); 
+     root->left->left->right = newNode(8); 
+     root->right->right->left = newNode(9); 
+     root->right->right->right = newNode(10); 
+  
+     printf("Inorder Trvaersal of given Tree is:\n"); 
+     print(root); 
+  
+     int a,b,c;
+	 a=b=c=INT_MIN;
+     topthree(root,a,b,c);
+     if(a!=INT_MIN)
+     cout<<"\nMax element is: "<<a;
+  	 if(b!=INT_MIN)
+     cout<<"\nSecond Max element is: "<<b;
+	 if(c!=INT_MIN)
+     cout<<"\nThird Max element is: "<<c;	
+    
+     return 0; 
+} 
