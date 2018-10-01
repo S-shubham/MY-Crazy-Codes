@@ -1,0 +1,47 @@
+// program to validate if the combination of brackets is valid or not
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void execute()
+{
+	string str;
+	cin>>str;
+	int i=0;
+	stack<char>s;
+	while(str[i]!='\0')
+	{
+		char c=str[i];
+		if(c=='(' || c=='{' || c=='[')
+		s.push(c);
+		else{
+			if(s.empty())
+			{
+				cout<<"\nFalse combination ";
+				return;
+			}
+			char d=s.top();
+			if((d=='(' && c==')') || (d=='{' && c=='}') || (d=='[' && c==']'))
+			s.pop();
+			else
+			{
+				cout<<"\nFalse combination ";
+				return;
+			}
+			
+		}
+		++i;
+	}
+	cout<<"\nValid Combination";
+}
+
+
+int main()
+{
+	int t;
+	freopen("a.txt","r",stdin);
+	cin>>t;
+	for(int i=0;i<t;i++)
+	execute();
+	return 0;
+}
