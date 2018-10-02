@@ -1,0 +1,65 @@
+https://www.geeksforgeeks.org/count-number-of-ways-to-partition-a-set-into-k-subsets/
+
+
+
+.................................................................................
+
+//Program to find the total no of ways in which we can partition a given set of size n into k different sets
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int countways(int n,int k)
+{
+	if(n==0||k==0||k>n)
+	return 0;
+	if(k==1||k==n)
+	return 1;
+	
+	return (k*countways(n-1,k)+countways(n-1,k-1));
+}
+
+int main()
+{
+	cout<<countways(3,2);
+}
+
+................................Solution using DP.....................................................
+
+
+// DP approach to find the no of ways to dividing a set of size n into k different sub sets
+
+#include<bits/stdc++.h>
+using namespace std;
+# define N 10
+# define K 2
+
+int dp[N+1][K+1];
+void fill()
+{
+	for(int i=0;i<=N;i++)
+	for(int j=0;j<=K;j++)
+	dp[i][j]=-1;
+}
+
+int findc(int a,int b)
+{
+	if(dp[a][b]!=-1)
+	return dp[a][b];
+	
+	if(a==0||b==0||a<b)
+	dp[a][b]=0;
+	else if(b==1||b==a)
+	dp[a][b]=1;
+	else
+	dp[a][b]=(b*findc(a-1,b)+findc(a-1,b-1));
+	
+	return dp[a][b];
+	
+}
+
+int main()
+{
+	fill();
+	cout<<"\nways are : "<<findc(N,K);
+}
