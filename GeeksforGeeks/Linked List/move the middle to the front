@@ -1,0 +1,83 @@
+Given a list move the middle node to the front of the list
+
+
+............................................................................................
+
+// Make middle node of linked list head
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+	int data;
+	node* next;
+};
+
+node* head=NULL;
+
+void push(int data)
+{
+	node* temp=new node();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(!head)
+	head=temp;
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+	
+}
+
+node* findmiddle()
+{
+	node* slow=head;
+	node* fast=head;
+	
+	while(fast && fast->next)
+	{
+		slow=slow->next;
+		fast=fast->next->next;
+	}
+	return slow;
+}
+
+void modifymiddle()
+{
+	node* target=findmiddle();
+	node* temp=new node();
+	temp->data=target->data;
+	temp->next=NULL;
+	
+	target->data=target->next->data;
+	node* del=target->next;
+	target->next=target->next->next;
+	delete(del);
+	temp->next=head;
+	head=temp;
+	
+	
+}
+
+void print()
+{
+	node* trav=head;
+	cout<<"\nList is : ";
+	while(trav)
+	{
+		cout<<trav->data<<" ";
+		trav=trav->next;
+	}
+}
+
+int main()
+{
+	for(int i=0;i<9;i++)
+	{
+		push(i);
+	}
+	print();
+	modifymiddle();
+	print();
+}
