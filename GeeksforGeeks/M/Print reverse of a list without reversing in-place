@@ -1,0 +1,55 @@
+// Print the reverse of a linked list without using any extra space or something
+
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+	int data;
+	node* next;
+};
+node* head=NULL;
+void push(int data)
+{
+	node* temp=new node();
+	temp->data=data;
+	temp->next=NULL;
+	
+	if(!head)
+	head=temp;
+	else
+	{
+		temp->next=head;
+		head=temp;
+	}
+	
+}
+void print(node* head)
+{
+	while(head)
+	{
+		cout<<head->data<<" ";
+		head=head->next;
+	}
+}
+
+void printreverse(node* head)
+{
+	if(!head)
+	return;
+	printreverse(head->next);
+	cout<<head->data<<" ";
+}
+
+int main()
+{
+	
+	
+	for(int i=0;i<10;i++)
+	{
+		push(i);
+	}
+	cout<<"\nnormal print is: ";
+	print(head);
+	cout<<"\nReverse print is: ";
+	printreverse(head);
+}
