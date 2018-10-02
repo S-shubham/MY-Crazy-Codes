@@ -1,0 +1,92 @@
+...This is my intutive approach to solve the problem using DP and Tabularization
+... I'm building up the solution from bottom up fashio and calculating all of it along the way 
+
+........................................................................................
+
+// WAP to find the binomial coefficient C(n,k)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int BC(int n,int k)
+{
+	int arr[n+1];
+	arr[0]=1;
+	for(int i=1;i<=n;i++)
+	arr[i]=i*arr[i-1];
+	
+	return arr[n]/arr[k]/arr[n-k];
+}
+
+int main()
+{
+	int n=7,k=3;
+	cout<<"\nBinomial Coefficient is : "<<BC(n,k);
+}
+
+...............................................................
+
+// WAP to find the binomial coefficient C(n,k)
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int BC(int n,int k)
+{
+	// Bottom up approach
+	
+	int dp[n+1][k+1];
+	for(int i=0;i<=n;i++)
+	{
+		for(int j=0;j<=min(i,k);j++)
+		{
+			if(j==0||j==i)
+			dp[i][j]=1;
+			else
+			dp[i][j]=dp[i-1][j-1]+dp[i-1][j];
+		}
+	}
+	return dp[n][k];
+}
+
+int main()
+{
+	int n=7,k=3;
+	cout<<"\nBinomial Coefficient is : "<<BC(n,k);
+}
+
+......................................O(n*k) space is being used...............................
+
+
+.............A better approach uses only O(k) space...................................
+
+#include<bits/stdc++.h> 
+using namespace std; 
+  
+int binomialCoeff(int n, int k) 
+{ 
+    int C[k+1]; 
+    memset(C, 0, sizeof(C)); 
+  
+    C[0] = 1;  // nC0 is 1 
+  
+    for (int i = 1; i <= n; i++) 
+    { 
+        // Compute next row of pascal triangle using 
+        // the previous row 
+        for (int j = min(i, k); j > 0; j--) 
+            C[j] = C[j] + C[j-1]; 
+    } 
+    return C[k]; 
+} 
+  
+/* Drier program to test above function*/
+int main() 
+{ 
+    int n = 5, k = 2; 
+    printf ("Value of C(%d, %d) is %d ", 
+            n, k, binomialCoeff(n, k) ); 
+    return 0; 
+} 
+
+..................................................................
