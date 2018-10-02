@@ -1,0 +1,47 @@
+
+https://www.geeksforgeeks.org/print-a-given-matrix-in-spiral-form/
+
+
+............................................................................................
+
+// Printing the matrix in a spiral form
+
+#include<bits/stdc++.h>
+#define R 4 
+#define C 4 
+using namespace std;
+
+
+void print(int a[R][C])
+{
+	int is=0,ie=R-1,js=0,je=C-1;
+	cout<<"\nThe spiral of the matrix is : ";
+	while(is<=ie || js<=je)
+	{
+		for(int i=js;i<=je;i++)
+		cout<<a[is][i]<<" ";
+		++is;
+		
+		for(int i=is;i<=ie;i++)
+		cout<<a[i][je]<<" ";
+		--je;
+		
+		for(int i=je;i>=js;i--)
+		cout<<a[ie][i]<<" ";
+		--ie;
+		
+		for(int i=ie;i>=is;i--)
+		cout<<a[i][js]<<" ";
+		++js;
+	}
+}
+
+int main()
+{
+	int a[R][C] = { {1,  2,  3,  4}, 
+        {5,  6,  7,  8}, 
+        {9,  10, 11, 12}, 
+        {13, 14, 15, 16}  }; 
+        
+        print(a);
+}
