@@ -1,0 +1,41 @@
+// Program to find ugly numbers, This is a brute force approach
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxdivide(int a,int b)
+{
+	while(a%b==0)
+	a=a/b;
+	return a;
+}
+
+bool isugly(int n)
+{
+	n=maxdivide(n,2);
+	n=maxdivide(n,3);
+	n=maxdivide(n,5);
+	
+	if(n==1)
+	return true;
+	return false;
+}
+
+int findugly(int n)
+{
+	int count=1;
+	int i=2;
+	while(count<n)
+	{
+		if(isugly(i))
+		++count;
+		++i;
+	}
+	return i-1;
+}
+
+int main()
+{
+	int n=150;
+	cout<<"\n150th ugly number is: "<<findugly(n);
+}
