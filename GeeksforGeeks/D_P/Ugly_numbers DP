@@ -1,0 +1,47 @@
+// Program to find ugly numbers, This is a brute force approach
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int findugly(int n)
+{
+	int ugly[n];
+	ugly[0]=1;
+	int i2,i3,i5;
+	i2=i3=i5=0;
+	
+	int nextmult2=2;
+	int nextmult3=3;
+	int nextmult5=5;
+	int next_ugly;
+	for(int i=1;i<n;i++)
+	{
+		next_ugly=min(min(nextmult2,nextmult3),nextmult5);
+		ugly[i]=next_ugly;
+		
+		if(next_ugly==nextmult2)
+		{
+			++i2;
+			nextmult2=ugly[i2]*2;
+		}
+		
+		if(next_ugly==nextmult3)
+		{
+			++i3;
+			nextmult3=ugly[i3]*3;
+		}
+		
+		if(next_ugly==nextmult5)
+		{
+			++i5;
+			nextmult5=ugly[i5]*5;
+		}
+	}
+	return next_ugly;
+}
+
+int main()
+{
+	int n=150;
+	cout<<"\n150th ugly number is: "<<findugly(n);
+}
