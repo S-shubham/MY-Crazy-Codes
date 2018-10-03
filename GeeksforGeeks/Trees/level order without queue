@@ -1,0 +1,81 @@
+https://www.geeksforgeeks.org/level-order-tree-traversal/
+
+
+
+.............................................................................................................
+
+
+// given a tree print level order without using any data structure
+// Idea is to first find the height of the tree
+// Then run a loop and call the print() function that many no. of times to print each level of the tree
+
+
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<bits/stdc++.h>
+using namespace std;
+
+
+struct node 
+{ 
+	int data; 
+	struct node* left, *right; 
+}; 
+
+struct node* newNode(int data) 
+{ 
+	struct node* node = (struct node*) 
+						malloc(sizeof(struct node)); 
+	node->data = data; 
+	node->left = NULL; 
+	node->right = NULL; 
+
+	return(node); 
+} 
+
+void findheight(node* root,int & ht,int cur)
+{
+	if(!root)
+	return;
+	
+	if(cur>ht)
+	ht=cur;
+	findheight(root->left,ht,cur+1);
+	findheight(root->right,ht,cur+1);
+	
+}
+
+void print(node* root,int ht,int cur)
+{
+	if(!root)
+	return;
+	if(cur==ht)
+	{
+		cout<<root->data<<" ";
+		return;
+	}
+	print(root->left,ht,cur+1);
+	print(root->right,ht,cur+1);
+}
+
+void plo(node* root)
+{
+	int height=0;
+	findheight(root,height,0);
+	for(int i=0;i<=height;i++)
+	print(root,i,0);
+}
+
+int main() 
+{ 
+	struct node *root = newNode(1); 
+	root->left	 = newNode(2); 
+	root->right	 = newNode(3); 
+	root->left->left = newNode(4); 
+	root->left->right = newNode(5); 
+
+	printf("Level Order traversal of binary tree is \n"); 
+	plo(root); 
+
+	return 0; 
+} 
