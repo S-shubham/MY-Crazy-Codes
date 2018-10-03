@@ -1,0 +1,60 @@
+
+https://www.geeksforgeeks.org/find-n-th-node-inorder-traversal/
+
+
+.......................................................
+
+// C program for nth nodes of inorder traversals 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node { 
+	int data; 
+	struct Node* left; 
+	struct Node* right; 
+}; 
+
+struct Node* newNode(int data) 
+{ 
+	struct Node* node = 
+		(struct Node*)malloc(sizeof(struct Node)); 
+	node->data = data; 
+	node->left = NULL; 
+	node->right = NULL; 
+
+	return (node); 
+} 
+
+void no(Node* root,int &n)
+{
+	if(!root)
+	return;
+	
+	no(root->left,n);
+	--n;	
+	if(n==0)
+	{
+		cout<<root->data;
+		return;
+	}
+	no(root->right,n);
+	
+	
+}
+
+
+int main() 
+{ 
+	struct Node* root = newNode(10); 
+	root->left = newNode(20); 
+	root->right = newNode(30); 
+	root->left->left = newNode(40); 
+	root->left->right = newNode(50); 
+
+	int n = 4; 
+
+	no(root, n); 
+	return 0; 
+} 
