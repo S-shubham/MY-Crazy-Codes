@@ -1,0 +1,59 @@
+..
+This is a quadratic solution and it does a lot of work to be honest .
+but this is the intuitive solution that i could think of 
+I will optimize it 
+
+https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/
+.....................
+
+// Given an array find the minimum no of swaps required to convert it into sorted array
+// O(n^2) solution 
+// create a copy and sort it
+// for each index check if the element in the original array is same or not
+// if not then swap and increase count by 1
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void swap(int &a,int &b)
+{
+	int temp=a;
+	a=b;
+	b=temp;
+}
+
+int findindex(int arr[],int x)
+{
+	int i=0;
+	while(arr[i]!=x)
+	++i;
+	return i;
+}
+
+int main()
+{
+	int arr[]={12,8,6, 15, 4, 3, 2};
+	int n=(sizeof(arr)/sizeof(int));
+	
+	int sorted[n];
+	for(int i=0;i<n;i++)
+	sorted[i]=arr[i];
+	
+	sort(sorted,sorted+n);
+	
+	int count=0;
+	for(int i=0;i<n;i++)
+	{
+		
+		if(arr[i]==sorted[i])	
+		continue;
+		
+		int index=findindex(arr,sorted[i]);
+		swap(arr[i],arr[index]);
+		++count;
+	}	
+	cout<<"\nTotal no of swaps required is : "<<count;
+}
+
+.....................................................................
+
