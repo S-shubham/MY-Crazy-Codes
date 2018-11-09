@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void alternate(int &a,int &b,int &x)
+{
+	x=a+b-x;
+}
+
+int main()
+{
+	int a=-10;
+	int b=15;
+	int x=a;
+	cout<<"x is : "<<x;
+	
+	alternate(a,b,x);
+	
+	cout<<"\nAFter exchnage : ";
+	cout<<"\n x is : "<<x;
+}
