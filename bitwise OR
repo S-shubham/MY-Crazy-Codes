@@ -5,5 +5,5 @@ int main()
 {
 	int n=8;
 	n=n^(1<<0);
-	cout<<n;
+	cout<<n; 
 }
