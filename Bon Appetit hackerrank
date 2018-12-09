@@ -5,7 +5,7 @@
 #include <ctime>
 #include <deque> 
 #include <queue>  
-#include <stack>
+#include <stack>  
 #include <string> 
 #include <bitset> 
 #include <cstdio>
