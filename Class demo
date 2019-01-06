@@ -1,7 +1,7 @@
 // Goal is to create a class with 10 objects
 #include<bits/stdc++.h>
 using namespace std;
-
+  
 class A{ 
 	public:
 		int a=10;
