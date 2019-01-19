@@ -32,7 +32,7 @@ int main()
 
     int v1 = stoi(x1V1X2V2[1]);
 
-    int x2 = stoi(x1V1X2V2[2]);
+    int x2 = stoi(x1V1X2V2[2]);  
 
     int v2 = stoi(x1V1X2V2[3]);
 
