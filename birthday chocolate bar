@@ -2,7 +2,7 @@
  
 using namespace std;
 
-vector<string> split_string(string);
+vector<string> split_string(string);  
 
 // Complete the solve function below.
 int solve(vector<int> s, int d, int m) {
