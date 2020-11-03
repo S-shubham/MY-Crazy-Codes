@@ -1,0 +1,44 @@
+//#include <bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {9,1,2,3,4,5,6,7,8};
+	//int d = 3;
+	int n = 9;
+	
+	// Find pivot
+	
+	int s=0,e=n-1;
+	int pivot=INT_MIN;
+	
+	while(s<e)
+	{
+	    int middle = (s+e)/2;
+	    if(middle == s)
+	    {
+	        pivot = s+1;
+	        break;
+	    }
+	    
+	    if((s+1) == middle)
+	    {
+	        pivot = middle;
+	        break;
+	    }
+	    
+	    
+	    if(arr[middle] < arr[s])
+	        // Means pivot is in left
+	        e = middle;
+	    else
+	        s=middle;
+	}
+    
+    cout<<"Pivot element is : "<<arr[pivot]<<endl;
+// 	cout<<"Rotated array is: ";
+// 	for(int i=0;i<n;i++)
+// 	cout<<arr[i]<<" ";
+	
+	return 0;
+}
