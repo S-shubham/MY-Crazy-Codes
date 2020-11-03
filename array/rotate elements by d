@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {1,2,3,4,5,6,7,8,9};
+	int d = 3;
+	int n = 9;
+	
+	int new_arr[n];
+	for(int i=d,j=0;i<n;i++,j++)
+	new_arr[j]=arr[i];
+	
+	for(int i=0, j=n-d; i<d;i++, j++)
+	new_arr[j]=arr[i];
+	
+	cout<<"Rotated array is: ";
+	for(int i=0;i<n;i++)
+	cout<<new_arr[i]<<" ";
+	
+	return 0;
+}
+
+++++++++++++
+Space - O(1)
+Time - O(n^2)
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {1,2,3,4,5,6,7,8,9};
+	int d = 3;
+	int n = 9;
+	
+    for(int i=0;i<d;i++)
+    {
+        int temp = arr[0];
+        for(int j=1;j<n;j++)
+        {
+            arr[j-1] = arr[j];
+        }
+        arr[n-1]=temp;
+    }
+    
+	cout<<"Rotated array is: ";
+	for(int i=0;i<n;i++)
+	cout<<arr[i]<<" ";
+	
+	return 0;
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+O(n) approach 
+Reverse algorithm for array rotation
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {1,2,3,4,5,6,7,8,9};
+	int d = 3;
+	int n = 9;
+	
+    for(int i=0, j=d-1;i<j;i++,j--)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    for(int i=d, j=n-1;i<j;i++,j--)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    for(int i=0, j=n-1;i<j;i++,j--)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+	cout<<"Rotated array is: ";
+	for(int i=0;i<n;i++)
+	cout<<arr[i]<<" ";
+	
+	return 0;
+}
+
+++++++++++++ One more approach using Set rotation +++++
+
+-> To Do
